@@ -24,7 +24,8 @@ export const color = {
     primary: (b: Brightness) => `hsl(213, 100%, ${b / 2}%)`,
     secondary: (b: Brightness) => `hsl(205, 100%, ${b / 2}%)`,
     slate: (h: boolean = false) => `hsl(273, 21%, ${h ? 15 : 11}%)`,
-    text: "hsl(0, 0%, 92%)",
+    boldText: "hsl(0, 0%, 97%)",
+    text: "hsl(215, 20%, 65%)",
 };
 
 const adjustBrightness = (b: Brightness, adjustment: number): Brightness => {

@@ -26,7 +26,7 @@ type StyledButtonProps = {
 const StyledButton = styled.button<StyledButtonProps>`
     position: relative;
     background: ${theme.gradient.secondary(100)};
-    color: ${theme.color.text};
+    color: ${theme.color.boldText};
     padding: ${theme.spacing[8]} ${theme.spacing[32]};
     border-radius: ${theme.radius.sm};
     border: none;

@@ -16,7 +16,9 @@ type Align = "center" | "flex-start" | "flex-end" | "baseline" | "stretch";
 type FlexProps = {
     children: React.ReactNode;
     col?: boolean;
+    wrap?: boolean;
     wfull?: boolean;
+    maxWidth?: string;
     minheight?: string;
     justify?: Justify;
     align?: Align;
@@ -27,7 +29,9 @@ type FlexProps = {
 export const Flex = ({
     children,
     col,
+    wrap,
     wfull,
+    maxWidth,
     minheight,
     justify,
     align,
@@ -37,8 +41,10 @@ export const Flex = ({
     return (
         <StyledFlex
             $col={col ? 1 : 0}
+            $wrap={wrap ? 1 : 0}
             $wfull={wfull ? 1 : 0}
             $minheight={minheight}
+            $maxWidth={maxWidth}
             $justify={justify}
             align={align}
             bg={bg}
@@ -51,8 +57,10 @@ export const Flex = ({
 
 type StyledFlexProps = {
     $col: number;
+    $wrap?: number;
     $wfull?: number;
     $minheight?: string;
+    $maxWidth?: string;
     $justify?: Justify;
     align?: Align;
     bg?: string;
@@ -63,6 +71,7 @@ const StyledFlex = styled.div<StyledFlexProps>`
     position: relative;
     display: flex;
     flex-direction: ${({ $col }) => ($col ? "column" : "row")};
+    flex-wrap: ${({ $wrap }) => ($wrap ? "wrap" : "nowrap")};
     justify-content: ${({ $justify }) => $justify || "center"};
     align-items: ${({ align }) => align || "center"};
     min-height: ${({ $minheight }) => $minheight || 0};
@@ -70,6 +79,11 @@ const StyledFlex = styled.div<StyledFlexProps>`
         $wfull &&
         css`
             width: 100%;
+        `};
+    ${({ $maxWidth }) =>
+        $maxWidth &&
+        css`
+            max-width: ${$maxWidth};
         `};
     ${({ bg }) =>
         bg &&

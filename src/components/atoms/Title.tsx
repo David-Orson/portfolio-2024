@@ -70,7 +70,7 @@ type StyledTitleProps = {
 
 const StyledH1 = styled.h1<StyledTitleProps>`
     max-width: 80%;
-    color: ${({ color }) => (color ? color : theme.color.text)};
+    color: ${({ color }) => (color ? color : theme.color.boldText)};
     font: ${({ size }) => theme.font(size).h1(700)};
     text-align: center;
     user-select: none;
@@ -95,7 +95,11 @@ const StyledH3 = styled.h3<StyledTitleProps>`
 const StyledH4 = styled.h4<StyledTitleProps>`
     max-width: 80%;
     color: transparent;
-    background: -webkit-linear-gradient(#14b8a6, #6366f1);
+    background: -webkit-linear-gradient(
+        180deg,
+        hsl(173, 80%, 40%),
+        hsl(230, 77%, 49%)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font: ${({ size }) => theme.font(size).h4(700)};

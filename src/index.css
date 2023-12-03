@@ -4,6 +4,15 @@
 margin: 0;
 box-sizing: border-box;
 color: hsl(0, 100%, 94%);
+
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: hsl(213, 100%, 5%);
 }
 
 /* changing this font size drives the rem for the whole app */
@@ -13,4 +22,26 @@ html {
 
 button {
     background-color: transparent;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: hsl(213, 100%, 5%);
+  border-left: 1px solid hsl(215, 20%, 65%, 0.5);
+  box-shadow: inset 1px 0px 10px hsl(215, 20%, 65%, 0.3);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: hsl(215, 20%, 65%);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
