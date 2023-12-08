@@ -11,21 +11,21 @@ import { Flex, Title, Text, Padding, TechBubble } from "../atoms";
 // assets
 import pfp from "../../assets/pfp.jpeg";
 import Stars from "../../svg/Stars";
-import Docker from "../../assets/icons8-docker-144.png";
-import ReactIcon from "../../assets/icons8-react-160.png";
-import Go from "../../assets/file_type_go_gopher_icon_130571.png";
-import TypeScript from "../../assets/icons8-typescript-144.png";
-import Kubernetes from "../../assets/icons8-kubernetes-144.png";
-import Linux from "../../assets/icons8-linux-24.png";
-import Postgres from "../../assets/icons8-postgres-144.png";
-import MySQL from "../../assets/icons8-mysql-96.png";
-import Vue from "../../assets/icons8-vue.js-an-open-source-javascript-framework-for-building-user-interfaces-and-single-page-applications-96.png";
-import Python from "../../assets/icons8-python-144.png";
-import Node from "../../assets/icons8-node.js-96.png";
+import Docker from "../../assets/docker.png";
+import ReactIcon from "../../assets/react.png";
+import Go from "../../assets/gopher.png";
+import TypeScript from "../../assets/typescript.png";
+import Kubernetes from "../../assets/kubernetes.png";
+import Linux from "../../assets/linux.png";
+import Postgres from "../../assets/postgres.png";
+import MySQL from "../../assets/mysql.png";
+import Vue from "../../assets/vue.png";
+import Python from "../../assets/python.png";
+import Node from "../../assets/node.png";
 import Rust from "../../assets/rust.png";
-import ReactNative from "../../assets/icons8-react-native-96.png";
-import Aws from "../../assets/icons8-amazon-aws-96.png";
-import Vim from "../../assets/icons8-vim-a-highly-configurable-text-editor-for-efficiently-creating-and-changing-any-kind-of-text-96.png";
+import ReactNative from "../../assets/react-native.png";
+import Aws from "../../assets/aws.png";
+import Vim from "../../assets/vim.png";
 
 const Technologies = [
     { name: "React", icon: ReactIcon },
@@ -63,13 +63,15 @@ export const About = () => {
                 <Stars />
             </div>
             <Flex
+                col={w < 1460}
                 wfull
                 wrap
-                align="flex-start"
-                justify="space-evenly"
-                maxWidth="90%"
+                align={w < 1460 ? "center" : "flex-start"}
+                justify="space-between"
+                maxWidth="85%"
+                gap={w < 1460 ? "64px" : "2px"}
             >
-                {w < 1382 && (
+                {w < 1460 && (
                     <ImageContainer>
                         <img src={pfp} alt="pfp" />
                     </ImageContainer>
@@ -89,6 +91,8 @@ export const About = () => {
                             {">"}
                         </Text>
                     </Flex>
+                    <Gap />
+                    <Gap />
                     <Padding px={8}>
                         <Text>
                             I am a software engineer with years of leadership
@@ -107,7 +111,10 @@ export const About = () => {
                             gap={w > 768 ? "16px" : "12px"}
                         >
                             {Technologies.map((tech) => (
-                                <TechBubble icon={tech.icon}>
+                                <TechBubble
+                                    icon={tech.icon}
+                                    size={w > 768 ? "md" : "sm"}
+                                >
                                     {tech.name}
                                 </TechBubble>
                             ))}
@@ -115,7 +122,7 @@ export const About = () => {
                         <Gap />
                     </Padding>
                 </Flex>
-                {w > 1381 && (
+                {w > 1459 && (
                     <ImageContainer>
                         <img src={pfp} alt="pfp" />
                     </ImageContainer>
@@ -132,6 +139,7 @@ const ImageContainer = styled.div`
     overflow: hidden;
     box-shadow: 0 0 0 10px hsl(213, 100%, 5%);
     border: 10px solid hsl(213, 100%, 5%);
+    user-select: none;
 
     img {
         height: 100%;

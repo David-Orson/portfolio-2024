@@ -5,8 +5,8 @@ import React from "react";
 import { useWindowSize } from "./hooks/ui/useWindowSize";
 
 // components
-import { Headline, About } from "./components/organisms";
-import { Padding } from "./components/atoms";
+import { Headline, About, Footer, Projects } from "./components/organisms";
+import { Padding, Gap } from "./components/atoms";
 
 const App = () => {
     // hooks
@@ -29,6 +29,10 @@ const App = () => {
                 <Padding>
                     <Headline />
                     <About />
+                    <Gap h={96} />
+                    {w > 1024 && <Gap h={96} />}
+                    <Projects />
+                    <Footer />
                 </Padding>
             </div>
         </>

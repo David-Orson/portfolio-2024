@@ -11,6 +11,11 @@ export const Headline = () => {
     // hooks
     const w = useWindowSize();
 
+    // methods
+    const sendEmail = () => {
+        window.location.href = "mailto:onlyorson@outlook.com";
+    };
+
     return (
         <Flex
             col
@@ -23,7 +28,7 @@ export const Headline = () => {
             </Flex>
             <Flex col gap={"16px"}>
                 <Text bold>Ready to develop solutions?</Text>
-                <Button onClick={() => console.log("hi")}>Contact Me</Button>
+                <Button onClick={sendEmail}>Contact Me</Button>
             </Flex>
         </Flex>
     );

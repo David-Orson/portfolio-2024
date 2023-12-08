@@ -12,9 +12,15 @@ type TitleProps = {
     children: React.ReactNode;
     h?: number;
     color?: string;
+    userSelect?: "none" | "auto";
 };
 
-export const Title = ({ children, h, color }: TitleProps) => {
+export const Title = ({
+    children,
+    h,
+    color,
+    userSelect = "none",
+}: TitleProps) => {
     // hooks
     const w = useWindowSize();
 
@@ -23,37 +29,61 @@ export const Title = ({ children, h, color }: TitleProps) => {
         switch (h) {
             case 1:
                 return (
-                    <StyledH1 size={w} color={color ? color : ""}>
+                    <StyledH1
+                        size={w}
+                        color={color ? color : ""}
+                        userSelect={userSelect}
+                    >
                         {children}
                     </StyledH1>
                 );
             case 2:
                 return (
-                    <StyledH2 size={w} color={color ? color : ""}>
+                    <StyledH2
+                        size={w}
+                        color={color ? color : ""}
+                        userSelect={userSelect}
+                    >
                         {children}
                     </StyledH2>
                 );
             case 3:
                 return (
-                    <StyledH3 size={w} color={color ? color : ""}>
+                    <StyledH3
+                        size={w}
+                        color={color ? color : ""}
+                        userSelect={userSelect}
+                    >
                         {children}
                     </StyledH3>
                 );
             case 4:
                 return (
-                    <StyledH4 size={w} color={color ? color : ""}>
+                    <StyledH4
+                        size={w}
+                        color={color ? color : ""}
+                        userSelect={userSelect}
+                    >
                         {children}
                     </StyledH4>
                 );
             case 5:
                 return (
-                    <StyledH5 size={w} color={color ? color : ""}>
+                    <StyledH5
+                        size={w}
+                        color={color ? color : ""}
+                        userSelect={userSelect}
+                    >
                         {children}
                     </StyledH5>
                 );
             default:
                 return (
-                    <StyledH1 size={w} color={color ? color : ""}>
+                    <StyledH1
+                        size={w}
+                        color={color ? color : ""}
+                        userSelect={userSelect}
+                    >
                         {children}
                     </StyledH1>
                 );
@@ -66,6 +96,7 @@ export const Title = ({ children, h, color }: TitleProps) => {
 type StyledTitleProps = {
     size: number;
     color: string;
+    userSelect: "none" | "auto";
 };
 
 const StyledH1 = styled.h1<StyledTitleProps>`
@@ -73,7 +104,7 @@ const StyledH1 = styled.h1<StyledTitleProps>`
     color: ${({ color }) => (color ? color : theme.color.boldText)};
     font: ${({ size }) => theme.font(size).h1(700)};
     text-align: center;
-    user-select: none;
+    user-select: ${({ userSelect }) => userSelect};
 `;
 
 const StyledH2 = styled.h2<StyledTitleProps>`
@@ -81,7 +112,7 @@ const StyledH2 = styled.h2<StyledTitleProps>`
     color: ${theme.color.text};
     font: ${({ size }) => theme.font(size).h2(700)};
     text-align: center;
-    user-select: none;
+    user-select: ${({ userSelect }) => userSelect};
 `;
 
 const StyledH3 = styled.h3<StyledTitleProps>`
@@ -89,11 +120,11 @@ const StyledH3 = styled.h3<StyledTitleProps>`
     color: ${theme.color.text};
     font: ${({ size }) => theme.font(size).h3(700)};
     text-align: center;
-    user-select: none;
+    user-select: ${({ userSelect }) => userSelect};
 `;
 
 const StyledH4 = styled.h4<StyledTitleProps>`
-    max-width: 80%;
+    max-width: 100%;
     color: transparent;
     background: -webkit-linear-gradient(
         180deg,
@@ -104,7 +135,8 @@ const StyledH4 = styled.h4<StyledTitleProps>`
     -webkit-text-fill-color: transparent;
     font: ${({ size }) => theme.font(size).h4(700)};
     text-align: center;
-    user-select: none;
+    user-select: ${({ userSelect }) => userSelect};
+    z-index: 3;
 `;
 
 const StyledH5 = styled.h5<StyledTitleProps>`
@@ -112,7 +144,7 @@ const StyledH5 = styled.h5<StyledTitleProps>`
     color: ${theme.color.text};
     font: ${({ size }) => theme.font(size).h5(700)};
     text-align: center;
-    user-select: none;
+    user-select: ${({ userSelect }) => userSelect};
 `;
 
 export default Title;
